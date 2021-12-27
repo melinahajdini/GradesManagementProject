@@ -6,25 +6,26 @@
 </head>
 <body>
 <center>
-    <form th:object="${professorModel}">
+    <form th:object="${professor}">
         <label>
             Name:
-            <input th:field="${professorModel.name}" type="text" />
+            <input th:field="${professor.name}" type="text" />
         </label>
 
         <label>
             Surname:
-            <input th:field="${professorModel.surname}" type="text"/>
+            <input th:field="${professor.surname}" type="text"/>
         </label>
 
         <label>
             Email:
-            <input th:field="${professorModel.email}" type="email"/>
+            <input th:field="${professor.email}" type="email"/>
         </label>
         <label>
             Password:
-            <input th:field="${professorModel.password}" type="password"/>
+            <input th:field="${professor.password}" type="password"/>
         </label>
+            <input type="submit" value="Register" />
     </form>
 </center>
 

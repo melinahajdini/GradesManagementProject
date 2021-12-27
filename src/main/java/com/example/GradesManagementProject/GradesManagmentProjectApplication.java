@@ -1,4 +1,4 @@
-package com.example.GradesManagmentProject;
+package com.example.GradesManagementProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

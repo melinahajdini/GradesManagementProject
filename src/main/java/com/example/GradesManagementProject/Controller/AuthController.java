@@ -1,6 +1,6 @@
-package com.example.GradesManagmentProject.Controller;
+package com.example.GradesManagementProject.Controller;
 
-import com.example.GradesManagmentProject.Model.ProfessorModel;
+import com.example.GradesManagementProject.Model.ProfessorModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthController {
     @GetMapping("/register-professor")
     public String getRegister(Model model){
-        model.addAttribute("professorModel", new ProfessorModel());
+        model.addAttribute("professor", new ProfessorModel());
         return "register";
     }
 }
