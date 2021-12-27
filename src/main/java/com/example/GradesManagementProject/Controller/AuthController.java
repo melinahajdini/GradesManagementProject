@@ -35,7 +35,12 @@ public class AuthController {
     }
 
     @GetMapping("/register-professor")
-    public String getRegister(Model model){
+    public String getRegister(Model model, HttpServletResponse response, HttpServletRequest request) throws IOException {
+        if (utilityService.isProfessorLoggedIn(request.getCookies())){
+            response.sendRedirect("/grades/dashboard");
+            return null;
+
+        }
         model.addAttribute("professor", new ProfessorModel());
         return "register";
     }
@@ -51,7 +56,12 @@ public class AuthController {
         return "dashboard";
     }
     @GetMapping("/login-professor")
-    public String getLogin(Model model){
+    //per mi marre cookies edhe a me kshyr a oshte logged in user-i
+    public String getLogin(Model model, HttpServletResponse response, HttpServletRequest request) throws IOException {
+        //me kshyr se nese oshte user-i logged in me e qu te dashboard
+        if (utilityService.isProfessorLoggedIn(request.getCookies())){
+            response.sendRedirect("/grades/dashboard");
+        }
         model.addAttribute("professorLoginModel", new ProfessorLoginModel());
         model.addAttribute("loginAction", "/grades/login-professor");
         return "login";
@@ -95,10 +105,11 @@ public class AuthController {
         return null;
     }
 
-    @GetMapping("/error")
-    public String getError(){
-        return "error";
-    }
+   // @GetMapping("/error")
+   // public String getError(){
+      //  return "error";
+    //}
+
     //ktu e kemi bo log out te user-it
     @GetMapping("/logout")
     public void logout(HttpServletResponse response) throws IOException {
