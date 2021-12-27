@@ -69,8 +69,10 @@ public class AuthController {
             return "login";
         }
         Cookie cookie = new Cookie("logged_in", "true");
+
         //qe me add cookie-n ne browser, qe me dite ku me e qu cookie-n :d
         cookie.setPath("/");
+
         //response e merr cookie-n edhe e shton dmth e bon add
         response.addCookie(cookie);
 
@@ -90,10 +92,25 @@ public class AuthController {
         sessionCookie.setPath("/");
         response.addCookie(sessionCookie);
         response.sendRedirect("/grades/dashboard");
-
-
         return null;
     }
 
+    @GetMapping("/error")
+    public String getError(){
+        return "error";
+    }
+    //ktu e kemi bo log out te user-it
+    @GetMapping("/logout")
+    public void logout(HttpServletResponse response) throws IOException {
+        Cookie loggedInCookie = new Cookie("logged_in", "false");
+        loggedInCookie.setPath("/");
+        loggedInCookie.setMaxAge(0);
+        Cookie sessionIdCookie = new Cookie("session_id", "");
+        sessionIdCookie.setPath("/");
+        sessionIdCookie.setMaxAge(0);
+        response.addCookie(loggedInCookie);
+        response.addCookie(sessionIdCookie);
+        response.sendRedirect("/grades/login-professor");
+    }
 }
 

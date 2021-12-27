@@ -5,6 +5,7 @@
     <title>Login View</title>
 </head>
 <body>
+
 <center>
     <form th:action="${loginAction}" method="post" th:object="${professorLoginModel}">
         <label>
@@ -16,8 +17,12 @@
             Password:
             <input th:field="${professorLoginModel.password}" type="password"/>
         </label>
+        <br/>
+        <span th:text="${error}"></span>
+        <br/>
+        <br/>
 
-        <input type="submit" value="login"/>
+        <input type="submit" value="Login"/>
 
 
     </form>
