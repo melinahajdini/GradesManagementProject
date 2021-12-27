@@ -6,7 +6,8 @@
 </head>
 <body>
 <center>
-    <form th:object="${professor}">
+
+    <form action="/grades/register-professor" method="post" th:object="${professor}">
         <label>
             Name:
             <input th:field="${professor.name}" type="text" />
