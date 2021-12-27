@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login View</title>
 </head>
 <body>
-<h1>Hello world</h1>
+<center>
+    <form th:action="${loginAction}" method="post" th:object="${professorLoginModel}">
+        <label>
+            Username:
+            <input th:field="${professorLoginModel.username}" type="email" />
+        </label>
+
+        <label>
+            Password:
+            <input th:field="${professorLoginModel.password}" type="password"/>
+        </label>
+
+        <input type="submit" value="login"/>
+
+
+    </form>
+</center>
+
 </body>
 </html>
