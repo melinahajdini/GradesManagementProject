@@ -1,4 +1,10 @@
 package com.example.GradesManagementProject.Repository;
 
-public interface StudentRepository {
+import com.example.GradesManagementProject.Model.Student;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface StudentRepository extends CrudRepository<Student, Long> {
+
 }
