@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject</title>
+</head>
+<body>
+<form th:object="${subject}" method="post" action="/grades/subject">
+
+<!--    private String subjectName;-->
+
+    <label>
+        Subject Name:
+        <input th:field="${subject.subjectName}" type="text"/>
+    </label>
+
+    <input type="submit" value="Add Subject" />
+</form>
+</body>
+</html>

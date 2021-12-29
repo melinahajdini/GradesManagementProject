@@ -2,7 +2,9 @@ package com.example.GradesManagementProject.Controller;
 
 import com.example.GradesManagementProject.Model.ProfessorModel;
 import com.example.GradesManagementProject.Model.Student;
+import com.example.GradesManagementProject.Model.SubjectModel;
 import com.example.GradesManagementProject.Repository.StudentRepository;
+import com.example.GradesManagementProject.Repository.SubjectRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/grades")
 public class DashboardController {
     private final StudentRepository studentRepository;
+    private final SubjectRepository subjectRepository;
 
-    public DashboardController(StudentRepository studentRepository){
+    public DashboardController(StudentRepository studentRepository, SubjectRepository subjectRepository){
         this.studentRepository = studentRepository;
+        this.subjectRepository = subjectRepository;
     }
 
     @GetMapping("/dashboard")
@@ -36,6 +40,21 @@ public class DashboardController {
 
         this.studentRepository.save(student);
         return "dashboard";
+    }
+    @GetMapping("/subject")
+    public String getSubjectModel(Model model){
+        model.addAttribute("subject", new SubjectModel());
+        return "subject";
+
+
+    }
+    @PostMapping("/subject")
+    public String postSubject(Model model, @ModelAttribute SubjectModel subjectModel){
+        model.addAttribute("subject", subjectModel);
+        this.subjectRepository.save(subjectModel);
+
+        return "dashboard";
+
     }
 
 }

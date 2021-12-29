@@ -8,7 +8,7 @@ public class SubjectModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String subjectName;
-    private int grade;
+
 
 
 
@@ -38,12 +38,4 @@ public class SubjectModel {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
-    }
-    public void setGrade(int grade){
-        this.grade = grade;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-}
+    }}
