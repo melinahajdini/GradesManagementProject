@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/grades")
 public class DashboardController {
@@ -36,11 +39,25 @@ public class DashboardController {
     @PostMapping("/student")
     public String postStudent(Model model, @ModelAttribute Student student){
             model.addAttribute("student", student);
-
-
         this.studentRepository.save(student);
         return "dashboard";
     }
+    @PostMapping("/viewStudents")
+    public String postViewStudents (@ModelAttribute Student student, Model model) {
+        model.addAttribute("student", student);
+        return "viewStudents";
+    }
+
+    @GetMapping("/viewStudents")
+    public String getViewStudents(Model model, @ModelAttribute Student student){
+       List<Student> studentList = (List<Student>) this.studentRepository.getStudentsByNameAndSurname(student.getName(), student.getSurname());
+        model.addAttribute("student", new Student());
+        model.addAttribute("students", studentList);
+        return "viewStudents";
+    }
+
+
+
     @GetMapping("/subject")
     public String getSubjectModel(Model model){
         model.addAttribute("subject", new SubjectModel());

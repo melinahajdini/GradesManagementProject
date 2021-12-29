@@ -10,6 +10,8 @@
 <!--private String age;-->
 <!--private String email;-->
 
+<a href="/viewStudents">Lista e studenteve </a>
+
 <form th:object="${student}" method="post" action="/grades/student">
     <label>
         Name:
@@ -34,5 +36,13 @@
 
 
 </form>
+<head>
+    <script>
+    function printStudents(){
+   window.print();
+}
+</script>
+    <button onclick="printStudents()"> Print Students</button>
+</head>
 </body>
 </html>
