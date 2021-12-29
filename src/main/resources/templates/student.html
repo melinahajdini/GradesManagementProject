@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<!--private String name;-->
+<!--private String surname;-->
+<!--private String age;-->
+<!--private String email;-->
+
+<form th:object="${student}" method="post" action="/grades/student">
+    <label>
+        Name:
+        <input th:field="${student.name}" type="text" />
+    </label>
+
+    <label>
+        Surname:
+        <input th:field="${student.surname}" type="text"/>
+    </label>
+    <label>
+        Age:
+        <input th:field="${student.age}" type="number"/>
+    </label>
+    <label>
+        Email:
+        <input th:field="${student.email}" type="email"/>
+    </label>
+
+    <input type="submit" value="Add Student" />
+
+
+
+</form>
+</body>
+</html>
