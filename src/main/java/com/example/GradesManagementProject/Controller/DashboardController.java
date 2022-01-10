@@ -30,6 +30,7 @@ public class DashboardController {
     public String getDashboard(){
         return "dashboard";
     }
+
     @GetMapping("/student")
     public String getStudent(Model model){
         model.addAttribute("student", new Student());

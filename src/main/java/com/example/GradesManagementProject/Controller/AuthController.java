@@ -23,6 +23,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/grades")
 public class AuthController {
+    //i kemi bo databazat
     private final UtilityService utilityService;
     private final ProfessorSessionRepository professorSessionRepository;
     private final ProfessorRepository professorRepository;
@@ -61,6 +62,7 @@ public class AuthController {
         //me kshyr se nese oshte user-i logged in me e qu te dashboard
         if (utilityService.isProfessorLoggedIn(request.getCookies())){
             response.sendRedirect("/grades/dashboard");
+            return null;
         }
         model.addAttribute("professorLoginModel", new ProfessorLoginModel());
         model.addAttribute("loginAction", "/grades/login-professor");
@@ -80,7 +82,7 @@ public class AuthController {
         }
         Cookie cookie = new Cookie("logged_in", "true");
 
-        //qe me add cookie-n ne browser, qe me dite ku me e qu cookie-n :d
+        //qe me add cookie-n ne browser, qe me dite ku me e qu cookie-n
         cookie.setPath("/");
 
         //response e merr cookie-n edhe e shton dmth e bon add

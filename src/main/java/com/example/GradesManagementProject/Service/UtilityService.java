@@ -20,6 +20,7 @@ public class UtilityService {
 
     private ProfessorRepository professorRepository;
     private ProfessorSessionRepository professorSessionRepository;
+
     public boolean isProfessorLoggedIn(Cookie[]cookies){
         return this.getLoggedInProfessor(cookies) != null;
     }
@@ -28,7 +29,7 @@ public class UtilityService {
         if(cookies == null){
             return null;
         }
-
+//i merr cookies edhe a jone prezent
         Optional<Cookie> cookieOptional = Arrays.stream(cookies)
                 .filter(c -> c.getName().equals("logged_in")
                         && c.getValue().equals("true"))
